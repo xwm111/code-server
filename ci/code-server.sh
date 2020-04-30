@@ -1,4 +1,5 @@
 #!/usr/bin/env sh
+# This script is intended to be bundled into the self contained releases.
 # Runs code-server with the bundled Node binary.
 
 # More complicated than readlink -f or realpath to support macOS.

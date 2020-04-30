@@ -6,4 +6,3 @@ out*
 release/
 release-upload/
 node_modules
-binaries

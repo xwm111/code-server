@@ -4,17 +4,17 @@ jobs:
   include:
     - name: Test
       if: tag IS blank
-      script: ./ci/image/run.sh "yarn && git submodule update --init && yarn vscode:patch && ./ci/ci.sh"
+      script: ./ci/image/run.sh "yarn && git submodule update --init && yarn vscode:patch && ./ci/test.sh"
       deploy: null
     - name: Linux Release
       if: tag IS present
       script:
-        - travis_wait 60 ./ci/image/run.sh "yarn && yarn vscode && ci/release.sh && ./ci/build-test.sh"
+        - travis_wait 60 ./ci/image/run.sh "yarn && yarn vscode && ci/release.sh && ./ci/test-build.sh"
         - ./ci/release-image/push.sh
     - name: Linux ARM64 Release
       if: tag IS present
       script:
-        - ./ci/image/run.sh "yarn && yarn vscode && ci/release.sh && ./ci/build-test.sh"
+        - ./ci/image/run.sh "yarn && yarn vscode && ci/release.sh && ./ci/test-build.sh"
         - ./ci/release-image/push.sh
       arch: arm64
     - name: MacOS Release
@@ -22,7 +22,7 @@ jobs:
       os: osx
       language: node_js
       node_js: 12
-      script: yarn && yarn vscode && travis_wait 60 ci/release.sh && ./ci/build-test.sh
+      script: yarn && yarn vscode && travis_wait 60 ci/release.sh && ./ci/test-build.sh
 
 before_deploy:
   - echo "$JSON_KEY" | base64 --decode > ./ci/key.json

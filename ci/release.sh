@@ -64,7 +64,7 @@ function main() {
   cd "$(dirname "${0}")/.."
   source ./ci/lib.sh
 
-  set_version
+  VERSION="$(code-server_version)"
 
   build
 

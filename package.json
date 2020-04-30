@@ -1,7 +1,13 @@
 {
-  "name": "code-server",
+  "name": "@coder/code-server",
   "license": "MIT",
   "version": "3.2.0",
+  "description": "Run VS Code on a remote server.",
+  "homepage": "https://github.com/cdr/code-server",
+  "bugs": {
+    "url": "https://github.com/cdr/code-server/issues"
+  },
+  "repository": "https://github.com/cdr/code-server",
   "scripts": {
     "clean": "ci/clean.sh",
     "vscode": "ci/vscode.sh",
@@ -14,6 +20,7 @@
     "build": "yarn runner build",
     "watch": "yarn runner watch"
   },
+  "main": "out/node/entry.js",
   "devDependencies": {
     "@types/adm-zip": "^0.4.32",
     "@types/fs-extra": "^8.0.1",
@@ -61,5 +68,16 @@
     "tar": "^6.0.1",
     "tar-fs": "^2.0.0",
     "ws": "^7.2.0"
-  }
+  },
+  "bin": {
+    "code-server": "out/node/entry.js"
+  },
+  "keywords": [
+    "vscode",
+    "development",
+    "ide",
+    "coder",
+    "vscode-remote",
+    "browser-ide"
+  ]
 }
